@@ -6,6 +6,8 @@ import com.example.websocketdemo.service.UserInformationBasicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserInformationBasicServiceImpl implements UserInformationBasicService {
 
@@ -15,6 +17,16 @@ public class UserInformationBasicServiceImpl implements UserInformationBasicServ
     @Override
     public UserInformationBasic save(UserInformationBasic userInformationBasic) {
         return userInformationBasicRepos.save(userInformationBasic);
+    }
+
+    @Override
+    public UserInformationBasic findByUserName(String userName) {
+        return userInformationBasicRepos.findByUserName(userName);
+    }
+
+    @Override
+    public UserInformationBasic findById(UUID id) {
+        return userInformationBasicRepos.findById(id).get();
     }
 
 }

@@ -1,0 +1,183 @@
+a {
+	text-decoration: none;
+	font-size: 25px; 
+	color: #efff00;	 
+}
+
+li {
+	list-style-type: none;
+}
+
+.more {
+	display: none;
+}
+
+.border_01 {	
+	margin-top: 50px;
+	border:groove;
+	background-color: #F5F597;
+}
+
+#container {
+	position: relative;	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+	/*--leftPage--*/
+
+	#container #leftPage {		
+		position: absolute;
+		background-color: #555555;		
+		height: 100%;		
+		margin-right: 100px;
+	}	
+		
+		#container #leftPage #image{
+			margin-bottom: 40px;
+		}
+			
+			#container #leftPage #image img{
+				transition: all 1s;
+			}
+
+			#container #leftPage #image img:hover {
+				transform: scale(1.5);
+				transform-origin: -10% -10%;
+			}
+
+			#container #leftpage #content #sub_menu_1{ 
+				display:none
+			} 
+				#container #leftpage #content #sub_menu_1 li a{ 
+					margin-left: 20px;
+					font-size: 20px;
+				}				
+
+	#container #rightPage {
+		padding-left: 265px;
+		margin-top: -15px;
+		margin-left: -10px;		
+	}
+	
+		#container #rightPage #content_profile_edit{
+			margin-left: 450px;			
+			display: none;
+		}
+		
+			#container #rightPage #content_profile_edit > button{
+				margin-left: 25px;			
+			}	
+	
+		#container #rightPage #content_profile{
+			margin-top: 10px;
+			margin-left: 450px;			
+			display: none;
+		}		
+		
+			#container #rightPage #content_profile > button{
+				margin-left: 100px;
+			}
+			
+			#container #rightPage #content_profile .border{
+				border: groove;
+				margin-right: 410px;
+			}
+		
+		#container #rightPage #content_home {		
+			margin-top: 20px;
+			margin-left: 200px;
+			margin-right: 200px;
+			display: block;
+		}
+		
+		#container #rightPage #list_objects {		
+			margin-top: 20px;
+			margin-left: 450px;			
+		}
+		
+			#container #rightPage #list_objects .border{		
+				border: groove;
+				margin-right: 410px;	
+			}
+				
+			#container #rightPage #list_objects > button{		
+				margin-left: 100px;				
+			}
+			
+			#container #rightPage #list_objects #list{
+				display: none;
+			}
+		
+			#container #rightPage #list_objects #edit_object {
+				margin-top: 20px;
+				display: none;
+			}
+			
+			#container #rightPage #list_objects #find_object {
+				display: none;
+			}
+			
+			#container #rightPage #list_objects #show_list{
+				display: none;
+				margin-top: 20px;
+			}
+
+		#container #rightPage #content_standard_create {
+			margin-top: 60px;
+			margin-left: 320px;
+			display: none			
+		}
+
+		#container #rightPage #title {
+			background-color: #229e7c;	
+			margin-left: -60px;
+			height: 50px;
+			line-height: 50px;
+			margin-top: 15px;				
+		}
+		
+		#container #rightPage #message {
+			margin-top: 20px;
+			margin-left: 450px;			
+			display: none;
+		}
+		
+		#container #rightPage #content_profile_edit {
+			display: none
+		}
+
+			#container #rightPage #title ul {
+				text-align: center;		
+			}
+
+			#container #rightPage #title ul li{			
+				display: inline-block;
+				color: 30px;			
+				width: 150px;					
+			}
+
+			#container #rightPage #title ul li:hover {
+				position: relative;
+				background-color: #66CC66;
+			}
+
+				#container #rightPage #title ul li a {
+					font-size: 25px;
+				}
+
+				#container #rightPage #title ul li .subForum {
+					display: none;
+					position: absolute;
+					padding-left: 0;
+					margin-top: 0;					
+					background-color: #229e7c;
+				}
+
+				#container #rightPage #title ul li:hover .subForum {
+					display: block;
+				}
+
+
+

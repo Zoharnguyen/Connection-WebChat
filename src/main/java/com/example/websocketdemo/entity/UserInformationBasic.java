@@ -1,8 +1,6 @@
 package com.example.websocketdemo.entity;
 
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,8 +11,6 @@ import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
-@Setter
-@Getter
 @Table(name = "user_information_basic")
 public class UserInformationBasic {
 
@@ -25,7 +21,7 @@ public class UserInformationBasic {
     private UUID id;
 
     @Column(name = "username")
-    private String username;
+    private String userName;
 
     @Column(name = "password")
     private String password;
@@ -36,8 +32,8 @@ public class UserInformationBasic {
     @OneToOne(mappedBy = "userInformationBasic")
     private UserProfile userProfile;
 
-    @OneToOne(mappedBy = "userInformationBasic")
-    private PersonDesire personDesire;
+    @OneToMany(mappedBy = "userInformationBasic")
+    private List<PersonDesire> personDesires = new ArrayList<>();
 
     @OneToMany(
             mappedBy = "user",
@@ -49,4 +45,67 @@ public class UserInformationBasic {
     @ManyToMany(mappedBy = "users")
     private Set<Conversation> conversations;
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
+    }
+
+    public List<PersonDesire> getPersonDesires() {
+        return personDesires;
+    }
+
+    public void setPersonDesires(List<PersonDesire> personDesires) {
+        this.personDesires = personDesires;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public Set<Conversation> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(Set<Conversation> conversations) {
+        this.conversations = conversations;
+    }
 }

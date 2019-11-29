@@ -1,0 +1,55 @@
+
+a {
+	font-size: 35px;
+	text-decoration: none;
+	color: white;
+}
+
+#container {
+	background-image: url("http://localhost:8081/applications/ConnectionApp/welcome.jpg");
+	height: 100%;
+	box-sizing: border-box;
+	-miz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	position: relative;
+}
+	#container #center {
+		position: absolute;
+		width: 400px;
+		height: 80px;	
+		margin-left: 500px;
+		margin-top: 200px;
+		text-align: center;
+	}
+
+	#container #center ul li{
+		list-style-type: none;
+		display: inline-block;
+		border: 3px solid yellow;
+		padding: 5px;		
+		transition: all 1s;
+		width: 110px;
+		height: 40px;
+	}
+
+	#container #center ul #login {		
+		margin-right: 25px;
+	}
+
+	#container #center ul #signup {		
+		margin-left: 25px;
+	}
+
+	#container #center ul li:hover {
+		background-color: #67BF7F;		
+		border: 5px solid green;
+		transform: scale(1.2);
+	}
+
+		#container #center ul li:hover a {
+			color: #DCD800;
+		}
+
+		#container #center ul li:active a {
+			color: #EE0000;
+		}

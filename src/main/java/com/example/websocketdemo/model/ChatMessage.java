@@ -7,6 +7,7 @@ public class ChatMessage {
     private MessageType type;
     private String content;
     private String sender;
+    public String destination = "/topic/public/1/2";
 
     public enum MessageType {
         CHAT,

@@ -1,0 +1,145 @@
+
+a {
+  text-decoration: none;
+  color: #071403;
+  transition: .5s ease;
+}
+a:hover {
+  color: #9AF6D8;
+}
+.form {
+	padding: 40px;
+	max-width: 600px;
+	margin: 40px auto;
+	border-radius: 4px;
+	box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+	box-sizing: border-box;
+	border: 3px solid black;
+	width: 320px;
+	padding: 10px;
+	margin-left: 500px;
+	margin-top: 110px;
+	text-align: center;    
+	background-color: #8B908E;	
+}
+
+.tab-content > div:last-child {
+  display: block;
+}
+
+label {
+  position: absolute;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  left: 13px;
+  color: rgba(255, 255, 255, 0.5);
+  transition: all 0.25s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 22px;
+}
+label .req {
+  margin: 2px;
+  color: #9AF6D8;
+}
+label.active {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+  left: 2px;
+  font-size: 14px;
+}
+label.active .req {
+  opacity: 0;
+}
+label.highlight {
+  color: #ffffff;
+}
+input, textarea {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #F7FFB9;
+  border-radius: 0;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+input:focus, textarea:focus {
+  outline: 0;
+  border-color: #9AF6D8;
+}
+
+.label-field {
+  position: relative;
+  margin-bottom: 40px;
+}
+.top-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.top-row > div {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+.top-row > div:last-child {
+  margin: 0;
+}
+
+#footer {
+  box-sizing: border-box;
+  margin-left: 150px;
+  font-size: 25px;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+ #footer {
+      box-sizing: border-box;
+      margin-left: 150px;
+      font-size: 25px;
+      margin-top: 10px;
+      padding: 10px;
+    }
+
+    #footer #submit {      
+      transition: all 1s;            
+    }
+
+    #footer #submit:hover {
+      transform: scale(1.2);
+    }
+
+    #footer #back {
+      transition: all 1s;
+      margin-top: 10px;
+      border: 3px solid #FF9900;
+      color: #F7FFB9;      
+      background-color: #CC9900;
+    }
+
+    #footer #back:hover {
+      border: 5px solid #CCFF66;
+      background-color: #F7FFB9;
+      transform: scale(1.2);
+    }
+
+      #footer #back:hover a {
+        color: #FF0033;
+      }
+ 
+#container {
+	background-image: url("http://localhost:8081/applications/ConnectionApp/welcome.jpg");
+	width: 100%;
+	text-align: center;	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: -110px;
+}
+	#container #signup {
+		margin-top: s50px;
+	}
