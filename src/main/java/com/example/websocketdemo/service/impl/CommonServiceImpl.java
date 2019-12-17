@@ -1,8 +1,11 @@
 package com.example.websocketdemo.service.impl;
 
+import com.example.websocketdemo.dto.MessageDto;
 import com.example.websocketdemo.dto.UserDesireDto;
 import com.example.websocketdemo.dto.UserDto;
 import com.example.websocketdemo.dto.UserProfileDto;
+import com.example.websocketdemo.entity.Message;
+import com.example.websocketdemo.entity.MessageList;
 import com.example.websocketdemo.entity.UserInformationBasic;
 import com.example.websocketdemo.entity.UserProfile;
 import com.example.websocketdemo.service.CommonService;
@@ -11,6 +14,7 @@ import com.example.websocketdemo.service.UserProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -55,6 +59,9 @@ public class CommonServiceImpl implements CommonService {
             userProfile.setGameCategoryFavourite(userDto.getGameCategoryFavourite());
             userProfile.setMusicCategoryFavourite(userDto.getMusicCategoryFavourite());
             userProfile.setSportCategoryFavourite(userDto.getSportCategoryFavourite());
+            userProfile.setAge(userDto.getAge());
+            if(userDto.getImageProfile() != null) userProfile.setImageProfile(userDto.getImageProfile());
+            if(userDto.getImageBackground() != null) userProfile.setImageBackground(userDto.getImageBackground());
             userProfileService.save(userProfile);
         }
     }
@@ -66,6 +73,77 @@ public class CommonServiceImpl implements CommonService {
         userProfileDtoList = checkPointObjectList(userDesireDto,userProfileDtoList);
         userProfileDtoList = sortByPoint(userProfileDtoList);
         return userProfileDtoList;
+    }
+
+    @Override
+    public boolean compareString(String str1, String str2) {
+        int l1 = str1.length();
+        int l2 = str2.length();
+        int lmin = Math.min(l1, l2);
+        for (int i = 0; i < lmin; i++) {
+            int str1_ch = (int)str1.charAt(i);
+            int str2_ch = (int)str2.charAt(i);
+
+            if (str1_ch != str2_ch) {
+                if(str1_ch > str2_ch) return true;
+                else return false;
+            }
+        }
+        if(l1 > l2) return true;
+        return false;
+    }
+
+    @Override
+    public List<MessageList> executeMessageLists(List<MessageList> messageLists) {
+
+        List<MessageList> toRemoteList = new ArrayList<>();
+        for(MessageList messageList : messageLists) {
+            outLoop: for(MessageList messageList1 : messageLists) {
+                messageList.setCreatedTime(findMaxTimestamp(messageList));
+                messageList1.setCreatedTime(findMaxTimestamp(messageList1));
+                if(messageList.getNameSender().equals(messageList1.getNameReceiver()) && messageList.getNameReceiver().equals(messageList1.getNameSender())) {
+                    if(messageList.getCreatedTime().after(messageList1.getCreatedTime())) toRemoteList.add(messageList1);
+                    else toRemoteList.add(messageList);
+                    break outLoop;
+                }
+            }
+        }
+        messageLists.removeAll(toRemoteList);
+        return messageLists;
+
+    }
+
+    @Override
+    public List<MessageDto> sortMessageByTime(List<Message> messageList01, List<Message> messageList02) {
+        messageList01.addAll(messageList02);
+        List<MessageDto> messageDtos = convertMessageListToMessageListDto(messageList01);
+        Collections.sort(messageDtos);
+        return messageDtos;
+    }
+
+    @Override
+    public List<MessageDto> convertMessageListToMessageListDto(List<Message> messageList) {
+
+        List<MessageDto> messageDtos = new ArrayList<>();
+        for(Message message : messageList) {
+            MessageDto messageDto = new MessageDto();
+            messageDto.setContent(message.getContent());
+            messageDto.setCreatedTime(message.getCreatedTime());
+            messageDto.setSenderName(message.getNameSender());
+            messageDto.setReceiverName(message.getNameReceiver());
+            messageDto.setSenderImage(message.getImageSender());
+            messageDto.setReceiverImage(message.getImageReceiver());
+            messageDtos.add(messageDto);
+        }
+        return messageDtos;
+
+    }
+
+    public Timestamp findMaxTimestamp(MessageList messageList) {
+
+        if(messageList.getUpdatedTime() != null) return messageList.getUpdatedTime();
+        else return messageList.getCreatedTime();
+
     }
 
     public List<UserProfileDto> convertUserProfileListToUserProfileDtoList(List<UserProfile> userProfileList) {
@@ -81,6 +159,7 @@ public class CommonServiceImpl implements CommonService {
             userProfileDto.setMusicCategoryFavourite(userProfile.getMusicCategoryFavourite());
             userProfileDto.setSportCategoryFavourite(userProfile.getSportCategoryFavourite());
             userProfileDto.setPoint(0);
+            userProfileDto.setImageProfile(userProfile.getImageProfile());
             userProfileDtoList.add(userProfileDto);
         }
         return userProfileDtoList;

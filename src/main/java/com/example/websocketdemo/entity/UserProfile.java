@@ -23,6 +23,12 @@ public class UserProfile {
     @Column(name = "fullname")
     private String fullname;
 
+    @Column(name = "image_profile")
+    private String imageProfile;
+
+    @Column(name = "image_background")
+    private String imageBackground;
+
     @Column(name = "gender")
     private String gender;
 
@@ -41,10 +47,13 @@ public class UserProfile {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     private UserInformationBasic userInformationBasic;
+
     @Column(name = "age")
     private int age;
+
     @Column(name = "music_category_favourite")
     private String musicCategoryFavourite;
+
     @Column(name = "game_category_favourite")
     private String gameCategoryFavourite;
 
@@ -135,4 +144,21 @@ public class UserProfile {
     public void setGameCategoryFavourite(String gameCategoryFavourite) {
         this.gameCategoryFavourite = gameCategoryFavourite;
     }
+
+    public String getImageProfile() {
+        return imageProfile;
+    }
+
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
+    }
+
+    public String getImageBackground() {
+        return imageBackground;
+    }
+
+    public void setImageBackground(String imageBackground) {
+        this.imageBackground = imageBackground;
+    }
+
 }

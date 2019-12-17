@@ -11,6 +11,15 @@ public class UserProfileDto {
     private String musicCategoryFavourite;
     private String gameCategoryFavourite;
     private int point;
+    private String imageProfile;
+
+    public String getImageProfile() {
+        return imageProfile;
+    }
+
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
+    }
 
     public String getFullName() {
         return fullName;

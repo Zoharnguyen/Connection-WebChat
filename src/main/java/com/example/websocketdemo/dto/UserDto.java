@@ -1,6 +1,8 @@
 package com.example.websocketdemo.dto;
 
 import com.example.websocketdemo.entity.PersonDesire;
+import com.example.websocketdemo.model.UploadForm;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +13,8 @@ public class UserDto {
     UUID idUser;
     String userName;
     String password;
-    String image;
+    String imageProfile;
+    String imageBackground;
     String fullName;
     String gender;
     LocalDate dateOfBirth;
@@ -22,6 +25,51 @@ public class UserDto {
     String musicCategoryFavourite;
     String gameCategoryFavourite;
     List<PersonDesire> personDesires;
+    UploadForm uploadFormProfile;
+    UploadForm uploadFormBackgroud;
+    String urlProfile;
+    String urlBackgroud;
+    MultipartFile[] files;
+
+    public MultipartFile[] getFiles() {
+        return files;
+    }
+
+    public void setFiles(MultipartFile[] files) {
+        this.files = files;
+    }
+
+    public UploadForm getUploadFormProfile() {
+        return uploadFormProfile;
+    }
+
+    public void setUploadFormProfile(UploadForm uploadFormProfile) {
+        this.uploadFormProfile = uploadFormProfile;
+    }
+
+    public UploadForm getUploadFormBackgroud() {
+        return uploadFormBackgroud;
+    }
+
+    public void setUploadFormBackgroud(UploadForm uploadFormBackgroud) {
+        this.uploadFormBackgroud = uploadFormBackgroud;
+    }
+
+    public String getUrlProfile() {
+        return urlProfile;
+    }
+
+    public void setUrlProfile(String urlProfile) {
+        this.urlProfile = urlProfile;
+    }
+
+    public String getUrlBackgroud() {
+        return urlBackgroud;
+    }
+
+    public void setUrlBackgroud(String urlBackgroud) {
+        this.urlBackgroud = urlBackgroud;
+    }
 
     public UserDto(String gender) {
         this.gender = gender;
@@ -70,12 +118,20 @@ public class UserDto {
         this.password = password;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageProfile() {
+        return imageProfile;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageProfile(String imageProfile) {
+        this.imageProfile = imageProfile;
+    }
+
+    public String getImageBackground() {
+        return imageBackground;
+    }
+
+    public void setImageBackground(String imageBackground) {
+        this.imageBackground = imageBackground;
     }
 
     public String getFullName() {

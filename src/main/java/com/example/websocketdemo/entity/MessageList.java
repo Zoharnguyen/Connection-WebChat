@@ -3,20 +3,21 @@ package com.example.websocketdemo.entity;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
-@Table(name = "message")
+@Table(name = "message_list")
 @NoArgsConstructor
-public class Message {
+public class MessageList {
 
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    @Column(name = "id")
     private UUID id;
 
     @Column(name = "content")
@@ -28,23 +29,43 @@ public class Message {
     @Column(name = "name_receiver")
     private String nameReceiver;
 
-    @Column(name = "image_sender")
-    private String imageSender;
-
-    @Column(name = "image_receiver")
-    private String imageReceiver;
-
     @CreationTimestamp
     @Column(name = "created_time")
     private Timestamp createdTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_sender")
-    private UserInformationBasic user;
+    @UpdateTimestamp
+    @Column(name = "updated_time")
+    private Timestamp updatedTime;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_conversation")
-    private Conversation conversation;
+    @Column(name = "image_receiver")
+    private String imageReceiver;
+
+    @Column(name = "image_sender")
+    private String imageSender;
+
+    public String getImageReceiver() {
+        return imageReceiver;
+    }
+
+    public void setImageReceiver(String imageReceiver) {
+        this.imageReceiver = imageReceiver;
+    }
+
+    public String getImageSender() {
+        return imageSender;
+    }
+
+    public void setImageSender(String imageSender) {
+        this.imageSender = imageSender;
+    }
+
+    public Timestamp getUpdatedTime() {
+        return updatedTime;
+    }
+
+    public void setUpdatedTime(Timestamp updatedTime) {
+        this.updatedTime = updatedTime;
+    }
 
     public UUID getId() {
         return id;
@@ -84,37 +105,5 @@ public class Message {
 
     public void setCreatedTime(Timestamp createdTime) {
         this.createdTime = createdTime;
-    }
-
-    public UserInformationBasic getUser() {
-        return user;
-    }
-
-    public void setUser(UserInformationBasic user) {
-        this.user = user;
-    }
-
-    public Conversation getConversation() {
-        return conversation;
-    }
-
-    public void setConversation(Conversation conversation) {
-        this.conversation = conversation;
-    }
-
-    public String getImageSender() {
-        return imageSender;
-    }
-
-    public void setImageSender(String imageSender) {
-        this.imageSender = imageSender;
-    }
-
-    public String getImageReceiver() {
-        return imageReceiver;
-    }
-
-    public void setImageReceiver(String imageReceiver) {
-        this.imageReceiver = imageReceiver;
     }
 }
